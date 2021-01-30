@@ -6508,10 +6508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d426a9b93b74f4683bebb59579a64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePlateSpeed: 80
-  crossSpeed: 140
+  basePlateSpeed: 100
+  crossSpeed: 120
   carSpeed: 10
-  rideTime: 10
+  rideTime: 120
   pauseTime: 2
   basePlateCurve:
     serializedVersion: 2

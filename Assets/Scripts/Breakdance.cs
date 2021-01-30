@@ -99,7 +99,7 @@ public class Breakdance : MonoBehaviour
 
         foreach (var cross in crosses)
         {
-            cross.transform.transform.Rotate(0, Time.fixedDeltaTime * crossSpeed * crossSpeedMultiplier, 0, Space.Self);
+            cross.transform.transform.Rotate(0, - Time.fixedDeltaTime * crossSpeed * crossSpeedMultiplier, 0, Space.Self);
         }
 
         for (int i = 0; i < cars.Length; i++)
