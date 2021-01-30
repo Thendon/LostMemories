@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     float clampAngle = 80.0f;
     [SerializeField]
+    float snapAngle = 60.0f;
+    [SerializeField]
     float moveSpeed = 1.0f;
     [SerializeField]
     float transitionDuration = 1.0f;
@@ -48,8 +50,6 @@ public class Player : MonoBehaviour
 
         if (!transitioning)
             HandleRotation();
-
-        //transform.rotation.SetLookRotation(headTransform.forward, transform.up);
 
         HandleUse();
     }
@@ -98,7 +98,9 @@ public class Player : MonoBehaviour
         transform.parent = null;
         transformAttach = null;
         transitioning = false;
-        transform.up = Vector3.up;
+
+        Vector3 forward = Vector3.Cross(transform.right, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
     }
 
     void GrabLocalRotation()
@@ -127,11 +129,25 @@ public class Player : MonoBehaviour
 
     void HandleRotation()
     {
+        if (transformAttach == null && Quaternion.Angle(headTransform.rotation, transform.rotation) > snapAngle)
+            SnapBodyToHeadRotation();
+
         Vector2 turnInput = input.GetPlayerTurn();
         turn.x += turnInput.x * turnSpeed * Time.deltaTime;
         turn.y -= turnInput.y * turnSpeed * Time.deltaTime;
         turn.y = Mathf.Clamp(turn.y, -clampAngle, clampAngle);
         headTransform.localRotation = Quaternion.Euler(turn.y, turn.x, 0.0f);
+    }
+
+    void SnapBodyToHeadRotation()
+    {
+        Vector3 headEuler = headTransform.eulerAngles;
+        Vector3 transformEuler = transform.eulerAngles;
+
+        transformEuler.y = headEuler.y;
+        turn.x = 0.0f;
+
+        transform.eulerAngles = transformEuler;
     }
 
     void HandleMovement()
@@ -140,6 +156,8 @@ public class Player : MonoBehaviour
         Vector2 moveInput = input.GetPlayerMove();
         Vector3 moveDir = cam.transform.right * moveInput.x + cam.transform.forward * moveInput.y;
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
+        if (moveInput.magnitude > 0.1f)
+            SnapBodyToHeadRotation();
         //physics
         bool grounded = controller.isGrounded;
         if (grounded && velocity.y < 0.0f)
