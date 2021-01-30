@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3763015376336551619
+--- !u!114 &-2866914973875067995
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: testMat
+  m_Name: achterbahn
   m_Shader: {fileID: -6465566751694194690, guid: c219eaf6e9e319a4482470ee3564e008, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -89,7 +89,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_5f5e5e27df194fc2806d4359e0f2a9dd: 32
+    - Vector1_461dda8762c54514beaee953771e9dc4: 3
+    - Vector1_5f5e5e27df194fc2806d4359e0f2a9dd: 8
     - Vector1_ffb9fb71b0bd4cfc8cb7fc39427df910: 50
     - _AlphaClip: 0
     - _Blend: 0
