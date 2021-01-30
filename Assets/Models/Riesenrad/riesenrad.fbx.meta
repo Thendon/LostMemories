@@ -3,7 +3,37 @@ guid: bcbdc65a89ef50644ad33b58279eee3c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dach
+    second: {fileID: 2100000, guid: 1759ba9ee0cfb3042aea198450449bc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Gel\xE4nder"
+    second: {fileID: 2100000, guid: dbaadfb4c372eef4eb12a2508820984d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gondel
+    second: {fileID: 2100000, guid: 216e5b9b586bbcd4ca265d18d43f5c43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lackierung
+    second: {fileID: 2100000, guid: 7770cda872ee8374e8924f495d58d249, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Floor_Painted_Metal_Floor_Rusty
+    second: {fileID: 2100000, guid: 9b3588b8f6c1a424ba188737e9120e92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Sitfl\xE4che Riesenrad"
+    second: {fileID: 2100000, guid: 843f9cdcb1ea6a843ba93e1c0f47c806, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

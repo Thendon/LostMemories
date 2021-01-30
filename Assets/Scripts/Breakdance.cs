@@ -5,18 +5,32 @@ using UnityEngine;
 public class Breakdance : MonoBehaviour
 {
 
-    public float speed = 1f;
-    public float carSpeed = 1.5f;
+    public float basePlateSpeed;
+    public float crossSpeed;
+    public float carSpeed;
 
     public GameObject basePlate;
-    public GameObject carPlate;
+    public GameObject[] crosses;
+    public GameObject[] cars;
 
 
     // Update is called once per frame
     void Update()
     {
+        basePlate.transform.transform.Rotate(0, Time.deltaTime * basePlateSpeed, 0, Space.Self);
 
-        basePlate.transform.Rotate(basePlate.transform.up, Time.deltaTime * speed);
+        foreach (var cross in crosses)
+        {
+            cross.transform.transform.Rotate(0, -Time.deltaTime * crossSpeed, 0, Space.Self);
+        }
+
+        foreach (var car in cars)
+        {
+            car.transform.transform.Rotate(0, Time.deltaTime * carSpeed, 0, Space.Self);
+        }
+
+        //basePlate.transform.RotateAround(transform.position, transform.up, Time.deltaTime * speed);
+        //basePlate.transform.Rotate(transform.up, Time.deltaTime * speed);
         //carPlate.transform.Rotate(carPlate.transform.up, Time.deltaTime * carSpeed);
     }
 }
