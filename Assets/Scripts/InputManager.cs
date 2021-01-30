@@ -36,4 +36,14 @@ public class InputManager : MonoBehaviour
     {
         return controls.DefaultMovement.Use.triggered;
     }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ReleaseCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 }
