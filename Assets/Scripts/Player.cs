@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    InputManager inputManager = null;
+    InputManager input = null;
     [SerializeField]
     Camera cam;
     [SerializeField]
@@ -22,16 +22,21 @@ public class Player : MonoBehaviour
 
     CharacterController controller;
     Vector3 velocity = Vector3.zero;
-    static public List<Chair> chairsInRange = new List<Chair>();
+    static public List<CamAttachment> chairsInRange = new List<CamAttachment>();
     Transform transformAttach = null;
     bool transitioning = false;
     float transitionTime = 0.0f;
-    Quaternion turn;
+    Vector2 turn = Vector2.zero;
 
     void Awake()
     {
-        turn = headTransform.transform.localRotation;
+        GrabLocalRotation();
         controller = GetComponent<CharacterController>();
+    }
+
+    void Start()
+    {
+        input.LockCursor();
     }
 
     void Update()
@@ -40,13 +45,18 @@ public class Player : MonoBehaviour
             MoveToTransformAttach();
         else
             HandleMovement();
-        HandleRotation();
+
+        if (!transitioning)
+            HandleRotation();
+
+        //transform.rotation.SetLookRotation(headTransform.forward, transform.up);
+
         HandleUse();
     }
 
     void HandleUse()
     {
-        if (!inputManager.PressedUseThisFrame())
+        if (!input.PressedUseThisFrame())
             return;
 
         //Check chairs
@@ -56,9 +66,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Chair closestChair = null;
+        CamAttachment closestChair = null;
         float closestChairDist = float.MaxValue;
-        foreach (Chair chair in chairsInRange)
+        foreach (CamAttachment chair in chairsInRange)
         {
             float chairDist = Vector3.Distance(chair.transform.position, cam.transform.position);
             if (chairDist < closestChairDist)
@@ -88,6 +98,14 @@ public class Player : MonoBehaviour
         transform.parent = null;
         transformAttach = null;
         transitioning = false;
+        transform.up = Vector3.up;
+    }
+
+    void GrabLocalRotation()
+    {
+        Vector3 localEuler = headTransform.localRotation.eulerAngles;
+        turn.x = localEuler.y;
+        turn.y = localEuler.x;
     }
 
     void MoveToTransformAttach()
@@ -95,30 +113,31 @@ public class Player : MonoBehaviour
         if (!transitioning)
             return;
 
-        transform.position = Vector3.MoveTowards(transform.position, transformAttach.position, transitionTime / transitionDuration);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, transformAttach.rotation, transitionTime / transitionDuration);
+        float t = transitionTime / transitionDuration;
+        transform.position = Vector3.Lerp(transform.position, transformAttach.position - transformAttach.up, t);
+        transform.rotation = Quaternion.Slerp(transform.rotation, transformAttach.rotation, t);
+        headTransform.localRotation = Quaternion.Slerp(headTransform.localRotation, Quaternion.identity, t);
+        GrabLocalRotation();
 
         transitionTime += Time.deltaTime;
 
-        if (transitionTime > transitionDuration)
+        if (transitionTime >= transitionDuration)
             transitioning = false;
     }
 
     void HandleRotation()
     {
-        Vector2 turnInput = inputManager.GetPlayerTurn();
+        Vector2 turnInput = input.GetPlayerTurn();
         turn.x += turnInput.x * turnSpeed * Time.deltaTime;
         turn.y -= turnInput.y * turnSpeed * Time.deltaTime;
         turn.y = Mathf.Clamp(turn.y, -clampAngle, clampAngle);
         headTransform.localRotation = Quaternion.Euler(turn.y, turn.x, 0.0f);
-
-        transform.rotation.SetLookRotation(cam.transform.forward, transform.up);
     }
 
     void HandleMovement()
     {
         //input
-        Vector2 moveInput = inputManager.GetPlayerMove();
+        Vector2 moveInput = input.GetPlayerMove();
         Vector3 moveDir = cam.transform.right * moveInput.x + cam.transform.forward * moveInput.y;
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
         //physics
@@ -131,7 +150,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Chair chair = other.gameObject.GetComponent<Chair>();
+        CamAttachment chair = other.gameObject.GetComponent<CamAttachment>();
         if (chair == null)
             return;
 
@@ -143,7 +162,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Chair chair = other.gameObject.GetComponent<Chair>();
+        CamAttachment chair = other.gameObject.GetComponent<CamAttachment>();
         if (chair == null)
             return;
 
