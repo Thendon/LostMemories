@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 7762775357370784214, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
+      propertyPath: attraction
+      value: 
+      objectReference: {fileID: 4723473500450441304}
     - target: {fileID: 7762775357370784215, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -553,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 7762775357370784214, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
+      propertyPath: attraction
+      value: 
+      objectReference: {fileID: 4723473500450441304}
     - target: {fileID: 7762775357370784215, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -610,6 +618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 7762775357370784214, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
+      propertyPath: attraction
+      value: 
+      objectReference: {fileID: 4723473500450441304}
     - target: {fileID: 7762775357370784215, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -667,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 7762775357370784214, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
+      propertyPath: attraction
+      value: 
+      objectReference: {fileID: 4723473500450441304}
     - target: {fileID: 7762775357370784215, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -724,6 +740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 7762775357370784214, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
+      propertyPath: attraction
+      value: 
+      objectReference: {fileID: 4723473500450441304}
     - target: {fileID: 7762775357370784215, guid: cd1aecfcdcfd58440af08fbbf951416b, type: 3}
       propertyPath: m_RootOrder
       value: 0
