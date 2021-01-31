@@ -9,8 +9,6 @@ namespace TCPSocketNetwork
         [SerializeField]
         AvatarManager avatars = null;
         [SerializeField]
-        Camera cam = null;
-        [SerializeField]
         Transform headTransform = null;
 
         // Update is called once per frame

@@ -21,14 +21,23 @@ public class Player : MonoBehaviour
     float transitionDuration = 1.0f;
     [SerializeField]
     Transform headTransform;
+    [SerializeField]
+    MemoryDisplay memoryDisplay;
+    [SerializeField]
+    GameObject winPrefab;
+    [SerializeField]
+    float winDistance = 10.0f;
 
     CharacterController controller;
     Vector3 velocity = Vector3.zero;
     static public List<CamAttachment> chairsInRange = new List<CamAttachment>();
-    Transform transformAttach = null;
+    CamAttachment chairAttached = null;
     bool transitioning = false;
-    float transitionTime = 0.0f;
+    float attachedTime = 0.0f;
     Vector2 turn = Vector2.zero;
+    bool memoryIsDisplayed = false;
+    Memory showMemoryOnLeave = null;
+    bool won = false;
 
     void Awake()
     {
@@ -43,8 +52,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (transformAttach != null)
-            MoveToTransformAttach();
+        if (chairAttached != null)
+            HandleBeingAttached();
         else
             HandleMovement();
 
@@ -52,6 +61,50 @@ public class Player : MonoBehaviour
             HandleRotation();
 
         HandleUse();
+        HandleAttraction();
+    }
+
+    void HandleAttraction()
+    {
+        if (chairAttached == null)
+            return;
+
+        Attraction attraction = chairAttached.attraction;
+        if (attraction == null)
+            return;
+
+        if (attachedTime < attraction.minUseDuration)
+            return;
+
+        if (GameManager.Instance.AddMemory(attraction.memory))
+            showMemoryOnLeave = attraction.memory;
+    }
+
+    void DisplayMemory()
+    {
+        memoryIsDisplayed = true;
+
+        memoryDisplay.Display(showMemoryOnLeave.header, showMemoryOnLeave.description, showMemoryOnLeave.image);
+        showMemoryOnLeave = null;
+    }
+
+    void HideMemory()
+    {
+        memoryIsDisplayed = false;
+
+        memoryDisplay.Hide();
+
+        if (!won && GameManager.Instance.IsGameover())
+        {
+            Win();
+        }
+    }
+
+    void Win()
+    {
+        won = true;
+        GameObject winObject = Instantiate(winPrefab);
+        winObject.transform.position = transform.position + transform.forward * winDistance;
     }
 
     void HandleUse()
@@ -60,9 +113,15 @@ public class Player : MonoBehaviour
             return;
 
         //Check chairs
-        if (transformAttach != null)
+        if (chairAttached != null)
         {
             ReleasePlayer();
+            return;
+        }
+
+        if (memoryIsDisplayed)
+        {
+            HideMemory();
             return;
         }
 
@@ -80,27 +139,30 @@ public class Player : MonoBehaviour
 
         if (closestChair != null)
         {
-            AttachPlayerTo(closestChair.transform);
+            AttachPlayerTo(closestChair);
             return;
         }
 }
 
-    void AttachPlayerTo(Transform t)
+    void AttachPlayerTo(CamAttachment t)
     {
-        transform.parent = t;
-        transformAttach = t;
-        transitionTime = 0.0f;
+        transform.parent = t.transform;
+        chairAttached = t;
+        attachedTime = 0.0f;
         transitioning = true;
     }
 
     void ReleasePlayer()
     {
         transform.parent = null;
-        transformAttach = null;
+        chairAttached = null;
         transitioning = false;
 
         Vector3 forward = Vector3.Cross(transform.right, Vector3.up);
         transform.rotation = Quaternion.LookRotation(forward, Vector3.up);
+
+        if (showMemoryOnLeave != null)
+            DisplayMemory();
     }
 
     void GrabLocalRotation()
@@ -110,26 +172,26 @@ public class Player : MonoBehaviour
         turn.y = localEuler.x;
     }
 
-    void MoveToTransformAttach()
+    void HandleBeingAttached()
     {
+        attachedTime += Time.deltaTime;
+
         if (!transitioning)
             return;
 
-        float t = transitionTime / transitionDuration;
-        transform.position = Vector3.Lerp(transform.position, transformAttach.position - transformAttach.up, t);
-        transform.rotation = Quaternion.Slerp(transform.rotation, transformAttach.rotation, t);
+        float t = attachedTime / transitionDuration;
+        transform.position = Vector3.Lerp(transform.position, chairAttached.GetPosition(), t);
+        transform.rotation = Quaternion.Slerp(transform.rotation, chairAttached.GetRotation(), t);
         headTransform.localRotation = Quaternion.Slerp(headTransform.localRotation, Quaternion.identity, t);
         GrabLocalRotation();
 
-        transitionTime += Time.deltaTime;
-
-        if (transitionTime >= transitionDuration)
+        if (attachedTime >= transitionDuration)
             transitioning = false;
     }
 
     void HandleRotation()
     {
-        if (transformAttach == null && Mathf.Acos(Vector3.Dot(headTransform.forward, Vector3.Cross(transform.right, headTransform.up))) * Mathf.Rad2Deg > snapAngle)
+        if (chairAttached == null && Mathf.Acos(Vector3.Dot(headTransform.forward, Vector3.Cross(transform.right, headTransform.up))) * Mathf.Rad2Deg > snapAngle)
             SnapBodyToHeadRotation();
 
         Vector2 turnInput = input.GetPlayerTurn();
