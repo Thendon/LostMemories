@@ -49,7 +49,7 @@ public class Breakdance : MonoBehaviour
 
     public void StartRide()
     {
-        Debug.Log("Starting the ride");
+        //Debug.Log("Starting the ride");
         rideStarted = true;
         currentRideTime = 0;
         currentPauseTime = 0;
@@ -57,7 +57,7 @@ public class Breakdance : MonoBehaviour
 
     public void EndRide()
     {
-        Debug.Log("Ending the ride");
+        //Debug.Log("Ending the ride");
 
         rideStarted = false;
         currentRideTime = 0;

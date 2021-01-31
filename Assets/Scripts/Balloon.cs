@@ -12,6 +12,8 @@ public class Balloon : MonoBehaviour
         StartCoroutine(Reactivate(5));
 
         m_Visual.SetActive(false);
+
+        GameManager.Instance.AddCoins(3);
     }
 
     IEnumerator Reactivate(int secs)
