@@ -2113,6 +2113,7 @@ GameObject:
   - component: {fileID: 6232745470614056090}
   - component: {fileID: 6232745470614056095}
   - component: {fileID: 6232745470614056094}
+  - component: {fileID: 6663167379701026514}
   m_Layer: 2
   m_Name: XRRigDemo
   m_TagString: Untagged
@@ -2356,3 +2357,15 @@ MonoBehaviour:
   m_HeadForwardSource: {fileID: 1767192434}
   m_LeftHandForwardSource: {fileID: 202364688}
   m_RightHandForwardSource: {fileID: 1670256625}
+--- !u!114 &6663167379701026514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717954561962503725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd727b57276cd884dbbd59c95567dcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
