@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
 
     void HandleRotation()
     {
-        if (transformAttach == null && Quaternion.Angle(headTransform.rotation, transform.rotation) > snapAngle)
+        if (transformAttach == null && Mathf.Acos(Vector3.Dot(headTransform.forward, Vector3.Cross(transform.right, headTransform.up))) * Mathf.Rad2Deg > snapAngle)
             SnapBodyToHeadRotation();
 
         Vector2 turnInput = input.GetPlayerTurn();
