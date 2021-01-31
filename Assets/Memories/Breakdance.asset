@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84467b3e7a5a1604cb5c27240d93e0dc, type: 3}
+  m_Name: Breakdance
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 14dd705113013e04390779af9d48d552, type: 3}
+  header: Breakdancer
+  description: 'The first time, I threw up. The trash can was my best friend. After
+    that, it became my favorite attraction. '
