@@ -29,6 +29,16 @@ public class Breakdance : MonoBehaviour
     public float carSpeedMultiplier = 0;
 
     public bool rideStarted = false;
+    public bool soundInQueue = false;
+
+    public AudioSource audioSource;
+    public AudioClip[] startAudioClips;
+    public AudioClip[] randomClips;
+    public List<AudioClip> randomClipsPlaylist;
+
+    public float minRandPlayTime;
+    public float maxRandPlayTime;
+    public float currentRandTimeToPlay;
 
     public void Awake()
     {
@@ -39,6 +49,9 @@ public class Breakdance : MonoBehaviour
             randomCarFq[i] = Random.Range(0.1f, 0.5f);
             randomCarOffset[i] = Random.Range(0f, 2.0f * Mathf.PI);
         }
+        randomClipsPlaylist = new List<AudioClip>();
+        randomClipsPlaylist.AddRange(randomClips);
+        Shuffle(randomClipsPlaylist);
     }
 
     public void Start()
@@ -50,9 +63,13 @@ public class Breakdance : MonoBehaviour
     public void StartRide()
     {
         //Debug.Log("Starting the ride");
+
+        PlayRandomStartClip();
+
         rideStarted = true;
         currentRideTime = 0;
         currentPauseTime = 0;
+        currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
     }
 
     public void EndRide()
@@ -62,6 +79,31 @@ public class Breakdance : MonoBehaviour
         rideStarted = false;
         currentRideTime = 0;
         currentPauseTime = 0;
+        currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
+    }
+
+    public void PlayRandomStartClip()
+    {
+        int randIndex = Random.Range(0, startAudioClips.Length);
+        audioSource.clip = startAudioClips[randIndex];
+        audioSource.Play();
+    }
+
+    public void PlayRandomAudioClip()
+    {
+        if (audioSource.isPlaying) return;
+
+        if (randomClipsPlaylist.Count == 0) 
+        {
+            randomClipsPlaylist.AddRange(randomClips);
+            Shuffle(randomClipsPlaylist);
+        }
+        var randClip = randomClipsPlaylist[0];
+        audioSource.clip = randClip;
+        audioSource.Play();
+        randomClipsPlaylist.RemoveAt(0);
+
+        currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
     }
 
     private void Update()
@@ -91,6 +133,12 @@ public class Breakdance : MonoBehaviour
                 StartRide();
             }
         }
+
+
+        // Check if we should play audio
+        currentRandTimeToPlay -= Time.deltaTime;
+        if (currentRandTimeToPlay < 0)
+            PlayRandomAudioClip();
     }
 
     void FixedUpdate()
@@ -108,9 +156,19 @@ public class Breakdance : MonoBehaviour
             float randomCarMultiplier = 10f * Mathf.Sin(Time.time + Time.time * randomCarFq[i] * 0.01f + randomCarOffset[i]);
             car.transform.transform.Rotate(0, Time.fixedDeltaTime * carSpeed * randomCarMultiplier * carSpeedMultiplier, 0, Space.Self);
         }
-
-        //basePlate.transform.RotateAround(transform.position, transform.up, Time.deltaTime * speed);
-        //basePlate.transform.Rotate(transform.up, Time.deltaTime * speed);
-        //carPlate.transform.Rotate(carPlate.transform.up, Time.deltaTime * carSpeed);
     }
+
+    public void Shuffle(IList ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
+
 }
