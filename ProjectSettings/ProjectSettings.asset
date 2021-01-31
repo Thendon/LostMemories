@@ -84,7 +84,7 @@ PlayerSettings:
   useFlipModelSwapchain: 1
   resizableWindow: 0
   useMacAppStoreValidation: 0
-  macAppStoreCategory: public.app-category.games
+  macAppStoreCategory: public.fun.games
   gpuSkinning: 1
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
@@ -127,13 +127,14 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 1.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 11400000, guid: 915332fbee40d0e40a61bd7969420300, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: -7352908059637916503, guid: 6a1049e967d9b2147a9835803d8faab8, type: 2}
+  - {fileID: 3695974993874398190, guid: 09d1d96468cc03444bbc5ec8d836207f, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
