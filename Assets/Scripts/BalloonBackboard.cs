@@ -4,14 +4,30 @@ using UnityEngine;
 
 public class BalloonBackboard : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    [SerializeField]
+    protected Transform m_Spawnpoint;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.attachedRigidbody)
+        if (collision.rigidbody)
         {
-            other.attachedRigidbody.useGravity = false;
-            other.attachedRigidbody.isKinematic = true;
+            collision.rigidbody.useGravity = false;
+            collision.rigidbody.isKinematic = true;
         }
 
-        Destroy(other.gameObject, 4f);
+        StartCoroutine(Respawn(5, collision));
+    }
+
+    IEnumerator Respawn(int secs, Collision collision)
+    {
+        yield return new WaitForSeconds(secs);
+        
+        if (collision.rigidbody)
+        {
+            collision.rigidbody.useGravity = true;
+            collision.rigidbody.isKinematic = false;
+        }
+
+        collision.gameObject.transform.position = m_Spawnpoint.position;
     }
 }
