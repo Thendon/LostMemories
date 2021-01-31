@@ -82,11 +82,14 @@ public class PlayerVR : MonoBehaviour
     public void AttachPlayerTo(CamAttachment t)
     {
         chairAttached = t;
+
         attachedTime = 0.0f;
     }
 
     public void ReleasePlayer()
     {
+        chairAttached = null;
+
         if (showMemoryOnLeave != null)
             DisplayMemory();
     }
