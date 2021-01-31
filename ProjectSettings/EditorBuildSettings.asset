@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FlorianScene.unity
     guid: 9bbb3ac0f28b9bc4c91440a638693003
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LostMemories.unity
     guid: 28aa9afadf7086d4e845cb4fbdfc6eb5
   m_configObjects:

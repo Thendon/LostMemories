@@ -10,11 +10,13 @@ namespace TCPSocketNetwork
         AvatarManager avatars = null;
         [SerializeField]
         Camera cam = null;
+        [SerializeField]
+        Transform headTransform = null;
 
         // Update is called once per frame
         void Update()
         {
-            avatars.BroadcastLocation(transform.position, transform.rotation);
+            avatars.BroadcastLocation(transform.position, headTransform.rotation);
         }
     }
 }
