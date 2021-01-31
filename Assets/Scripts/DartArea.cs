@@ -16,8 +16,14 @@ public class DartArea : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
 
-        other.attachedRigidbody.angularVelocity = Vector3.zero;
-        other.attachedRigidbody.velocity = Vector3.zero;
+        if (other.attachedRigidbody)
+        {
+            other.attachedRigidbody.angularVelocity = Vector3.zero;
+            other.attachedRigidbody.velocity = Vector3.zero;
+
+            other.attachedRigidbody.useGravity = true;
+            other.attachedRigidbody.isKinematic = false;
+        }
 
         other.gameObject.transform.position = m_Spawnpoint.position;
     }
