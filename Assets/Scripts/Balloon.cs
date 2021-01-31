@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Balloon : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Balloon : MonoBehaviour
     protected GameObject m_Visual;
 
     [SerializeField]
-    protected ParticleSystem m_Particle;
+    protected VisualEffect m_Particle;
 
     private void OnTriggerEnter(Collider other)
     {
