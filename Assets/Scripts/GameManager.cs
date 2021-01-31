@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class GameManager
 {
-    const int memoryWinCondition = 1;
+    const int memoryWinCondition = 4;
     private static GameManager _instance;
 
     public static GameManager Instance

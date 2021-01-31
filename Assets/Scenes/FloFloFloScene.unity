@@ -482,7 +482,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.01
   sharedProfile: {fileID: 11400000, guid: 24cb2b9338a911941a807f21f9644b3f, type: 2}
 --- !u!4 &1868116009
 Transform:
