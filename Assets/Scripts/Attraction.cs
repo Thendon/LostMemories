@@ -8,4 +8,6 @@ public class Attraction : MonoBehaviour
     public Memory memory = null;
     [SerializeField]
     public float minUseDuration = 10.0f;
+    [SerializeField]
+    public int cost = 1;
 }

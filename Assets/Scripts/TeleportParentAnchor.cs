@@ -8,6 +8,16 @@ namespace UnityEngine.XR.Interaction.Toolkit
         [SerializeField]
         protected bool m_ShouldParent = true;
 
+        PlayerVR player = null;
+        CamAttachment chair = null;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            player = FindObjectOfType<PlayerVR>();
+            chair = transform.parent.gameObject.GetComponent<CamAttachment>();
+        }
+
         /// <summary>
         /// The <see cref="Transform"/> that represents the teleportation destination.
         /// </summary>
@@ -47,6 +57,8 @@ namespace UnityEngine.XR.Interaction.Toolkit
             teleportRequest.destinationRotation = m_TeleportAnchorTransform.rotation;
 
             XRRigSingleton.Instance.gameObject.transform.parent = transform;
+
+            player.AttachPlayerTo(chair);
 
             return true;
         }
