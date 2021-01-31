@@ -23,4 +23,9 @@ public class CamAttachment : MonoBehaviour
         //evll anders herum :D
         return transform.rotation * rotOffset;
     }
+
+    public bool UseChair()
+    {
+        return GameManager.Instance.RemoveCoins(attraction.cost);
+    }
 }

@@ -2156,7 +2156,7 @@ MonoBehaviour:
   transitionDuration: 1
   headTransform: {fileID: 4923440539456982}
   memoryDisplay: {fileID: 8978596963738142810}
-  winPrefab: {fileID: 0}
+  winPrefab: {fileID: 359024489257243869, guid: 2a7f086e69f405346aded40e84aee97d, type: 3}
   winDistance: 10
 --- !u!114 &722535633
 MonoBehaviour:
@@ -2301,13 +2301,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7092223089819677451, guid: 780375fcb239b974fa7c5f297d07c098, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7690880272509137609, guid: 780375fcb239b974fa7c5f297d07c098, type: 3}
       propertyPath: m_Name
       value: MemoryDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 7690880272509137609, guid: 780375fcb239b974fa7c5f297d07c098, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8008610510573190973, guid: 780375fcb239b974fa7c5f297d07c098, type: 3}
       propertyPath: m_SizeDelta.x

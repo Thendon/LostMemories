@@ -76,8 +76,12 @@ public class Player : MonoBehaviour
         if (attachedTime < attraction.minUseDuration)
             return;
 
-        if (GameManager.Instance.AddMemory(attraction.memory))
-            showMemoryOnLeave = attraction.memory;
+        Memory memory = attraction.memory;
+        if (memory == null)
+            return;
+
+        if (GameManager.Instance.AddMemory(memory))
+            showMemoryOnLeave = memory;
     }
 
     void DisplayMemory()
@@ -137,7 +141,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (closestChair != null)
+        if (closestChair != null)// && closestChair.UseChair())
         {
             AttachPlayerTo(closestChair);
             return;
