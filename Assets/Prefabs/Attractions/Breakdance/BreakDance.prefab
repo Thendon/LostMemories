@@ -6557,9 +6557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basePlateSpeed: 100
   crossSpeed: 120
-  carSpeed: 10
+  carSpeed: 30
   rideTime: 80
-  pauseTime: 2
+  pauseTime: 4
   basePlateCurve:
     serializedVersion: 2
     m_Curve:

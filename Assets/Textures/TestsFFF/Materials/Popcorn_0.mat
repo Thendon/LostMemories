@@ -10,7 +10,7 @@ Material:
   m_Name: Popcorn_0
   m_Shader: {fileID: -6465566751694194690, guid: 08b013188b6dc61438db7ca775a95daf, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _EMISSION
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -84,8 +84,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_a7f3cbc217974af1b469c54f4cf78467: 15
-    - Vector1_b330cc58981f4e39a0fa092f2e134272: 0.5
+    - Vector1_a7f3cbc217974af1b469c54f4cf78467: 0
+    - Vector1_b330cc58981f4e39a0fa092f2e134272: 0
     - _AlphaClip: 1
     - _Blend: 0
     - _BumpScale: 1
