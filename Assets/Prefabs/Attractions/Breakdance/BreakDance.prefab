@@ -6559,7 +6559,7 @@ MonoBehaviour:
   crossSpeed: 120
   carSpeed: 30
   rideTime: 80
-  pauseTime: 4
+  pauseTime: 5
   basePlateCurve:
     serializedVersion: 2
     m_Curve:
@@ -6792,14 +6792,14 @@ MonoBehaviour:
   startAudioClips:
   - {fileID: 8300000, guid: 786e87ad2a5b76649aa53fce75ecf7d7, type: 3}
   - {fileID: 8300000, guid: 066f0678106aa48458b7dba5232f384e, type: 3}
-  - {fileID: 8300000, guid: 14e361a603dbe0246b3ed78da8e454b8, type: 3}
   - {fileID: 8300000, guid: 882665227eb16c640955e181db4a21ee, type: 3}
+  - {fileID: 8300000, guid: 155bd2312d20c9246ad6f7e4cd4cfddc, type: 3}
   - {fileID: 8300000, guid: 925390a49e653fd41824ba2fd2305cf7, type: 3}
   - {fileID: 8300000, guid: 155bd2312d20c9246ad6f7e4cd4cfddc, type: 3}
   randomClips:
   - {fileID: 8300000, guid: e803dfd3f5c9d6e4ea725354409c9d26, type: 3}
   - {fileID: 8300000, guid: 34a185acb144db54780b4080896fc02b, type: 3}
-  - {fileID: 8300000, guid: 6a8033c49dd0c714cbf92109b44fd85f, type: 3}
+  - {fileID: 8300000, guid: 84ee5ab841ed0f14385a907a9b589699, type: 3}
   - {fileID: 8300000, guid: dfef893fea1639546ae32609423fb514, type: 3}
   - {fileID: 8300000, guid: 884cc4c0df1afc9428ba73f0e33d89e8, type: 3}
   - {fileID: 8300000, guid: afa047fd41a1d6a42aea6714fd7f86d5, type: 3}
