@@ -96,14 +96,20 @@ namespace TCPSocketNetwork
         public ulong localPlayerID = 0;
         public List<ulong> connectedPlayers = new List<ulong>();
 
+        [SerializeField]
+        private Animator[] syncedAnimators = new Animator[0];
+
         private Queue<Task> TaskQueue = new Queue<Task>();
         private object _queueLock = new object();
 
         public static Action OnConnected;
         public static Action OnInitialized;
         public static Action OnDisconnected;
+        public static Action OnSync;
         public static Action<ulong> OnPlayerConnected;
         public static Action<ulong> OnPlayerDisconnected;
+
+        public static long serverStartTimeStamp = -1;
 
         void Awake()
         {
@@ -119,6 +125,8 @@ namespace TCPSocketNetwork
                 if (arguments[i] == "-ip" && arguments.Length > i + 1)
                     serverIP = arguments[i + 1];
             }
+
+            OnSync += Sync;
         }
 
         void OnEnable()
@@ -207,6 +215,24 @@ namespace TCPSocketNetwork
             }
         }
 
+        [SerializeField]
+        float syncCooldown = 2.0f;
+        float syncTimer = 0.0f;
+
+        public void LateUpdate()
+        {
+            if (!Ready())
+                return;
+
+            syncTimer -= Time.deltaTime;
+
+            if (syncTimer < 0.0f)
+            {
+                syncTimer += syncCooldown;
+                OnSync?.Invoke();
+            }
+        }
+
         void DisconnectServer()
         {
             if (server == null)
@@ -255,6 +281,30 @@ namespace TCPSocketNetwork
             OnPlayerConnected?.Invoke(playerID);
         }
 
+        public static float TimeScinceServerStart()
+        {
+            return (DateTime.Now.Ticks - serverStartTimeStamp) * 0.0000001f;
+        }
+
+        public void Sync()
+        {
+            float timeScinceStart = TimeScinceServerStart();
+            print(timeScinceStart + " " + syncedAnimators.Length);
+            foreach (Animator animator in syncedAnimators)
+            {
+                AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+                float animationDuration = info.length;
+                float normalizedTime = timeScinceStart / animationDuration;
+                normalizedTime -= (int)normalizedTime;
+
+                print(animator.gameObject.name + " " + normalizedTime + " " + animationDuration);
+
+                animator.Play(info.fullPathHash, 0, normalizedTime);
+            }
+
+            syncTimer += syncCooldown;
+        }
+
         void OnClientInitialized(PackageIn package)
         {
             bool success = package.ReadBool();
@@ -273,14 +323,17 @@ namespace TCPSocketNetwork
             localPlayerID = package.ReadUnsignedLong();
             connectionStatus = ConnectionStatus.Initialized;
 
+            serverStartTimeStamp = package.ReadLong();
+
             int otherPlayerCount = package.ReadInt();
             for (int i = 0; i < otherPlayerCount; i++)
                 connectedPlayers.Add(package.ReadUnsignedLong());
 
-            print("invoke onInitialized");
-            print(OnInitialized);
-            OnInitialized?.Invoke();
-            print("done");
+            ScheduleTask(new Task(delegate
+            {
+                OnInitialized?.Invoke();
+                OnSync?.Invoke();
+            }));
         }
     }
 }

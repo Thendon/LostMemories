@@ -332,6 +332,7 @@ MonoBehaviour:
   attachedToSomething: 0
   headTransform: {fileID: 3904260487774883498}
   movementThreshold: 0.1
+  movementSpeed: 10
   snapAngle: 60
   rotationSpeed: 2
 --- !u!1 &2997212781303325852

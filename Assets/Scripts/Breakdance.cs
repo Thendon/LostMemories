@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TCPSocketNetwork;
 using UnityEngine;
 
 public class Breakdance : MonoBehaviour
@@ -44,6 +45,8 @@ public class Breakdance : MonoBehaviour
     {
         randomCarFq = new float[cars.Length];
         randomCarOffset = new float[cars.Length];
+
+        Random.InitState(1337);
         for (int i = 0; i < randomCarFq.Length; i++)
         {
             randomCarFq[i] = Random.Range(0.1f, 0.5f);
@@ -52,6 +55,8 @@ public class Breakdance : MonoBehaviour
         randomClipsPlaylist = new List<AudioClip>();
         randomClipsPlaylist.AddRange(randomClips);
         Shuffle(randomClipsPlaylist);
+
+        TCPSocketConnection.OnSync += SyncAnimation;
     }
 
     public void Start()
@@ -59,6 +64,16 @@ public class Breakdance : MonoBehaviour
         StartRide();
     }
 
+    public void SyncAnimation()
+    {
+        float animationTime = TCPSocketConnection.TimeScinceServerStart();
+        currentRideTime = animationTime % (rideTime + pauseTime);
+
+        if (currentRideTime > rideTime)
+            EndRide();
+
+        print(name + " " + currentRideTime + " " + currentPauseTime);
+    }
 
     public void StartRide()
     {
@@ -67,7 +82,7 @@ public class Breakdance : MonoBehaviour
         PlayRandomStartClip();
 
         rideStarted = true;
-        currentRideTime = 0;
+        currentRideTime = currentPauseTime - pauseTime;
         currentPauseTime = 0;
         currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
     }
@@ -77,8 +92,8 @@ public class Breakdance : MonoBehaviour
         //Debug.Log("Ending the ride");
 
         rideStarted = false;
+        currentPauseTime = currentRideTime - rideTime;
         currentRideTime = 0;
-        currentPauseTime = 0;
         currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
     }
 

@@ -15,6 +15,8 @@ public class Avatar : MonoBehaviour
     [SerializeField]
     float movementThreshold = 0.1f;
     [SerializeField]
+    float movementSpeed = 4.0f;
+    [SerializeField]
     float snapAngle = 60.0f;
     [SerializeField]
     float rotationSpeed = 4.0f;
@@ -29,7 +31,7 @@ public class Avatar : MonoBehaviour
         float velocity = Vector3.Distance(transform.position, targetPos);
         float ang = Mathf.Acos(Vector3.Dot(headTransform.forward, Vector3.Cross(transform.right, headTransform.up)));
 
-        transform.position = targetPos;
+        transform.position = Vector3.Lerp(transform.position, targetPos, movementSpeed * Time.deltaTime);
         headTransform.rotation = Quaternion.RotateTowards(headTransform.rotation, targetRot, rotationSpeed * 180.0f * Time.deltaTime);
 
         if (!attachedToSomething && (velocity > movementThreshold || ang * Mathf.Rad2Deg > snapAngle))
