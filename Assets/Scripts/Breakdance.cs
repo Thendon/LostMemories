@@ -79,7 +79,7 @@ public class Breakdance : MonoBehaviour
     {
         //Debug.Log("Starting the ride");
 
-        PlayRandomStartClip();
+       
 
         rideStarted = true;
         currentRideTime = currentPauseTime - pauseTime;
@@ -90,6 +90,8 @@ public class Breakdance : MonoBehaviour
     public void EndRide()
     {
         //Debug.Log("Ending the ride");
+
+        PlayRandomStartClip();
 
         rideStarted = false;
         currentPauseTime = currentRideTime - rideTime;
@@ -118,7 +120,11 @@ public class Breakdance : MonoBehaviour
         audioSource.Play();
         randomClipsPlaylist.RemoveAt(0);
 
-        currentRandTimeToPlay = Random.Range(minRandPlayTime, maxRandPlayTime);
+        var timeToEnd = rideTime - currentRideTime;
+
+        var minRandTime = timeToEnd > minRandPlayTime ? minRandPlayTime : timeToEnd + minRandPlayTime;
+
+        currentRandTimeToPlay = Random.Range(minRandTime, maxRandPlayTime);
     }
 
     private void Update()

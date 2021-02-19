@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     GameObject winPrefab;
     [SerializeField]
     float winDistance = 10.0f;
+    [SerializeField]
+    public WearableAttachmentPoint attachmentPoint;
 
     CharacterController controller;
     Vector3 velocity = Vector3.zero;
@@ -129,6 +131,13 @@ public class Player : MonoBehaviour
             return;
         }
 
+        var interactable = GetInteractable();
+        if (interactable != null)
+        {
+            interactable.Interact(this);
+            return;
+        }
+
         CamAttachment closestChair = null;
         float closestChairDist = float.MaxValue;
         foreach (CamAttachment chair in chairsInRange)
@@ -146,7 +155,7 @@ public class Player : MonoBehaviour
             AttachPlayerTo(closestChair);
             return;
         }
-}
+    }
 
     void AttachPlayerTo(CamAttachment t)
     {
@@ -154,6 +163,16 @@ public class Player : MonoBehaviour
         chairAttached = t;
         attachedTime = 0.0f;
         transitioning = true;
+    }
+
+    IInteractable GetInteractable()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
+        {
+            return hit.rigidbody.GetComponent<IInteractable>();
+        }
+        return null;
     }
 
     void ReleasePlayer()
