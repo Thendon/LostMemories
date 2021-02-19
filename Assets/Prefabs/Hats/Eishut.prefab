@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6282376927852963699}
   - component: {fileID: 672956508116089109}
   - component: {fileID: 4128908439732088628}
+  - component: {fileID: 1570578787}
   m_Layer: 0
   m_Name: Eishut
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3872733557759140027}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -36,7 +37,7 @@ Transform:
   - {fileID: 2760974742835271079}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &674059585636054436
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -134,10 +135,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8199627143655272752}
+        m_TargetAssemblyTypeName: Wearable, Assembly-CSharp
+        m_MethodName: OnGrabInteractableActivated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8199627143655272752}
+        m_TargetAssemblyTypeName: Wearable, Assembly-CSharp
+        m_MethodName: OnGrabInteractableDeactivated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -214,8 +239,10 @@ ParentConstraint:
   m_Weight: 1
   m_TranslationAtRest: {x: -0, y: 0, z: 0}
   m_RotationAtRest: {x: -89.98, y: 0, z: 0}
-  m_TranslationOffsets: []
-  m_RotationOffsets: []
+  m_TranslationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -224,7 +251,23 @@ ParentConstraint:
   m_AffectRotationZ: 1
   m_IsContraintActive: 0
   m_IsLocked: 0
-  m_Sources: []
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
+--- !u!64 &1570578787
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3872733557759140027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7511973540910660438, guid: 082610d18c776ff47af98c92e7e5a445, type: 3}
 --- !u!1 &4929541272192789927
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +279,8 @@ GameObject:
   - component: {fileID: 3131312384453802506}
   - component: {fileID: 1055563203305766902}
   - component: {fileID: 3457880421887365883}
-  m_Layer: 0
+  - component: {fileID: 1076361519}
+  m_Layer: 8
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,6 +350,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1076361519
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4929541272192789927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3613567641014311022, guid: 082610d18c776ff47af98c92e7e5a445, type: 3}
 --- !u!1001 &7097592119834733923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,21 +375,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: WearableHat
       objectReference: {fileID: 0}
+    - target: {fileID: 3212531288397902692, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4598367299463928676, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
+      propertyPath: m_Radius
+      value: 0.0025
+      objectReference: {fileID: 0}
     - target: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,3 +446,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4913222185475766468, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
   m_PrefabInstance: {fileID: 7097592119834733923}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8199627143655272752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1420141434184752211, guid: 4f19c53158888f643b23ec1be2fa4443, type: 3}
+  m_PrefabInstance: {fileID: 7097592119834733923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bec15dd898b5a94fad8e22969471f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

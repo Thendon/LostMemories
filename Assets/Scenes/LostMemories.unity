@@ -4223,6 +4223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbfefe40e98fa9648aff1caafe71c678, type: 3}
+--- !u!4 &128099501 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1767192434, guid: ecdbf3dc6204e7a46943712ecfb94c12, type: 3}
+  m_PrefabInstance: {fileID: 1387405414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129885918
 GameObject:
   m_ObjectHideFlags: 0
@@ -54141,7 +54146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: ecdbf3dc6204e7a46943712ecfb94c12, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: ecdbf3dc6204e7a46943712ecfb94c12, type: 3}
       propertyPath: m_RootOrder
@@ -62053,10 +62058,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zylinder
       objectReference: {fileID: 0}
-    - target: {fileID: 2566193599344845798, guid: 726a2e3394899384092fc141160ed1f8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2942860291649894748, guid: 726a2e3394899384092fc141160ed1f8, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -62103,25 +62104,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 726a2e3394899384092fc141160ed1f8, type: 3}
---- !u!1 &1572209156 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2566193599344845798, guid: 726a2e3394899384092fc141160ed1f8, type: 3}
-  m_PrefabInstance: {fileID: 1572209155}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1572209157
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572209156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6042843973029681290, guid: b8c38b5b2908c1a41a6b947440d46f2b, type: 3}
 --- !u!1001 &1577910092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66258,10 +66240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magic_Hat
       objectReference: {fileID: 0}
-    - target: {fileID: 1334102933750934695, guid: d0cedf4497c6688468607d25b45285aa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1857874623295108637, guid: d0cedf4497c6688468607d25b45285aa, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -67103,6 +67081,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697346427}
   m_Mesh: {fileID: 4300006, guid: 41212a0a5585e0243b25926856a1c30c, type: 3}
+--- !u!1 &1699738435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699738436}
+  - component: {fileID: 1699738438}
+  - component: {fileID: 1699738437}
+  m_Layer: 8
+  m_Name: Wearable Attachment Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1699738436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699738435}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 128099501}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!135 &1699738437
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699738435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1699738438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699738435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cfa4c2e80e0ac4eac87741a4e7440e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wearableAttached: 0
 --- !u!1001 &1700145213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78549,10 +78585,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eishut
       objectReference: {fileID: 0}
-    - target: {fileID: 3872733557759140027, guid: 06c2f83559097694a88eb28e6970efa8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4536644394547657217, guid: 06c2f83559097694a88eb28e6970efa8, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -87256,7 +87288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833406464479578201, guid: 6203081d40944284b9184113ac1dfb38, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7833406464479578205, guid: 6203081d40944284b9184113ac1dfb38, type: 3}
       propertyPath: m_RootOrder
