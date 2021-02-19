@@ -313,6 +313,25 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &8827245974807190925
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112045656066681733}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3b7fa70dc2464f4fb6ced659145a5d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &1307068134
 AudioSource:
   m_ObjectHideFlags: 0
@@ -409,25 +428,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &8827245974807190925
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5112045656066681733}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f3b7fa70dc2464f4fb6ced659145a5d9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &477874050322046218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -621,14 +621,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -32.84895
       objectReference: {fileID: 0}
+    - target: {fileID: -5809276672890001326, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -5000803545608551131, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4190bd2c1ca0e9844a0cc93a84d083c1, type: 2}
+    - target: {fileID: -2688373797552672456, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -945529377970454465, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4190bd2c1ca0e9844a0cc93a84d083c1, type: 2}
+    - target: {fileID: -917139342820661587, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 806827749952246048, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 806827749952246048, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -641,6 +657,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2f5aab5a7a5aa1145997d0e48dc10332, type: 2}
+    - target: {fileID: 5370451003710808639, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5574572729223200238, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -88.71442
@@ -657,6 +677,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4190bd2c1ca0e9844a0cc93a84d083c1, type: 2}
+    - target: {fileID: 6444611230292794955, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6444611230292794955, guid: b0c74e7def4f41f4b9e92489053b66de, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
