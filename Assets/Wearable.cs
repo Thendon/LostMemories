@@ -11,8 +11,39 @@ public class Wearable : MonoBehaviour
 
     private WearableAttachmentPoint attachmentPoint;
 
-    private bool isWorn = false;
-    private bool isInteracted = false;
+    public bool isWorn = false;
+    public bool isInteracted = false;
+
+    public void GetWornBy(WearableAttachmentPoint newAttachmentPoint)
+    {
+        if (newAttachmentPoint.wearableAttached)
+            return;
+
+        attachmentPoint = newAttachmentPoint;
+
+        var source = parentContraint.GetSource(0);
+        source.sourceTransform = attachmentPoint.transform;
+        parentContraint.SetSource(0, source);
+        parentContraint.weight = 1;
+        parentContraint.constraintActive = true;
+        isWorn = true;
+        attachmentPoint.wearableAttached = true;
+    }
+
+    public void Release()
+    {
+        if (isWorn)
+        {
+            var source = parentContraint.GetSource(0);
+            source.sourceTransform = null;
+            parentContraint.SetSource(0, source);
+            parentContraint.weight = 0;
+            parentContraint.constraintActive = false;
+            isWorn = false;
+            attachmentPoint.wearableAttached = false;
+            attachmentPoint = null;
+        }
+    }
 
     public void Awake()
     {
@@ -25,17 +56,8 @@ public class Wearable : MonoBehaviour
         Debug.Log("Activated");
 
         isInteracted = true;
-        if (isWorn)
-        {
-            var source = parentContraint.GetSource(0);
-            source.sourceTransform = null;
-            parentContraint.SetSource(0, source);
-            parentContraint.weight = 0;
-            parentContraint.constraintActive = false;
-            isWorn = false;
-            attachmentPoint.wearableAttached = false;
-            attachmentPoint = null;
-        }
+        Release();
+
     }
 
     public void OnGrabInteractableDeactivated(SelectExitEventArgs args)
@@ -56,21 +78,10 @@ public class Wearable : MonoBehaviour
 
         Debug.Log("Hat collision with: " + other.gameObject.name);
 
-        var wap = other.GetComponent<WearableAttachmentPoint>();
-        if (wap != null)
+        var wearableAttachmentPoint = other.GetComponent<WearableAttachmentPoint>();
+        if (wearableAttachmentPoint != null)
         {
-            if (wap.wearableAttached)
-                return;
-
-            attachmentPoint = wap;
-
-            var source = parentContraint.GetSource(0);
-            source.sourceTransform = attachmentPoint.transform;
-            parentContraint.SetSource(0, source);
-            parentContraint.weight = 1;
-            parentContraint.constraintActive = true;
-            isWorn = true;
-            attachmentPoint.wearableAttached = true;
+            GetWornBy(wearableAttachmentPoint);
         }
     }
 
