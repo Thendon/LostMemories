@@ -289,15 +289,12 @@ namespace TCPSocketNetwork
         public void Sync()
         {
             float timeScinceStart = TimeScinceServerStart();
-            print(timeScinceStart + " " + syncedAnimators.Length);
             foreach (Animator animator in syncedAnimators)
             {
                 AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
                 float animationDuration = info.length;
                 float normalizedTime = timeScinceStart / animationDuration;
                 normalizedTime -= (int)normalizedTime;
-
-                print(animator.gameObject.name + " " + normalizedTime + " " + animationDuration);
 
                 animator.Play(info.fullPathHash, 0, normalizedTime);
             }

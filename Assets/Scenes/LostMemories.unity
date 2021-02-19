@@ -39020,6 +39020,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.000000066204116
       objectReference: {fileID: 0}
+    - target: {fileID: 1791075301677658464, guid: b6143917095c6474ca859709c364fb1c, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2391291721783855753, guid: b6143917095c6474ca859709c364fb1c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -56538,6 +56542,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1636428275, guid: c579b94202931a64d9b814160f6e11bf, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 668511816209265308, guid: c579b94202931a64d9b814160f6e11bf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -85748,6 +85756,10 @@ PrefabInstance:
     - target: {fileID: 8215342284010934639, guid: 8f1abee3cfc6672448c7aa953e9daee5, type: 3}
       propertyPath: m_ScaleInLightmap
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827245974807190925, guid: 8f1abee3cfc6672448c7aa953e9daee5, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f1abee3cfc6672448c7aa953e9daee5, type: 3}

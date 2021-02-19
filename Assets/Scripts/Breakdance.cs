@@ -71,8 +71,6 @@ public class Breakdance : MonoBehaviour
 
         if (currentRideTime > rideTime)
             EndRide();
-
-        print(name + " " + currentRideTime + " " + currentPauseTime);
     }
 
     public void StartRide()
