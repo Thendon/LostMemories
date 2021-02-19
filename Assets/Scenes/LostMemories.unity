@@ -20358,6 +20358,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7593078058334437425, guid: 92992d4019a478b4aa26f413b8c565e0, type: 3}
   m_PrefabInstance: {fileID: 565204374}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &566568509 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1636428275, guid: c579b94202931a64d9b814160f6e11bf, type: 3}
+  m_PrefabInstance: {fileID: 1444105793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &573413729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46835,6 +46840,11 @@ MeshFilter:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6807723911431687782, guid: f26b78768f220674d932c0a50833fd15, type: 3}
   m_PrefabInstance: {fileID: 9169579201752447428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1180324997 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1791075301677658464, guid: b6143917095c6474ca859709c364fb1c, type: 3}
+  m_PrefabInstance: {fileID: 1013493514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1181742380
 PrefabInstance:
@@ -85761,6 +85771,11 @@ MonoBehaviour:
   memory: {fileID: 11400000, guid: e83a220a72a258a48b90970655e660e2, type: 2}
   minUseDuration: 10
   cost: 1
+--- !u!95 &3973606565307360985 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8827245974807190925, guid: 8f1abee3cfc6672448c7aa953e9daee5, type: 3}
+  m_PrefabInstance: {fileID: 3973606565307360982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4119340358587542997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87515,6 +87530,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7617194536879179422, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
+      propertyPath: serverIP
+      value: 5.9.67.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617194536879179422, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
+      propertyPath: syncedAnimators.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617194536879179422, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
+      propertyPath: syncedAnimators.Array.data[0]
+      value: 
+      objectReference: {fileID: 566568509}
+    - target: {fileID: 7617194536879179422, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
+      propertyPath: syncedAnimators.Array.data[1]
+      value: 
+      objectReference: {fileID: 3973606565307360985}
+    - target: {fileID: 7617194536879179422, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
+      propertyPath: syncedAnimators.Array.data[2]
+      value: 
+      objectReference: {fileID: 1180324997}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11e5cddac33ea4a46aa32c94b5da14f7, type: 3}
 --- !u!1001 &7754661105201851602
