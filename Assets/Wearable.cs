@@ -53,7 +53,7 @@ public class Wearable : MonoBehaviour
 
     public void OnGrabInteractableActivated(SelectEnterEventArgs args)
     {
-        Debug.Log("Activated");
+        //Debug.Log("Activated");
 
         isInteracted = true;
         Release();
@@ -62,7 +62,7 @@ public class Wearable : MonoBehaviour
 
     public void OnGrabInteractableDeactivated(SelectExitEventArgs args)
     {
-        Debug.Log("Deactivated");
+        //Debug.Log("Deactivated");
         isInteracted = false;
     }
 
@@ -76,7 +76,7 @@ public class Wearable : MonoBehaviour
             return;
         }
 
-        Debug.Log("Hat collision with: " + other.gameObject.name);
+        //Debug.Log("Hat collision with: " + other.gameObject.name);
 
         var wearableAttachmentPoint = other.GetComponent<WearableAttachmentPoint>();
         if (wearableAttachmentPoint != null)

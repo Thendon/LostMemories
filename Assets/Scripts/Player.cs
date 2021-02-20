@@ -170,7 +170,8 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2))
         {
-            return hit.rigidbody.GetComponent<IInteractable>();
+            if (hit.rigidbody)
+                return hit.rigidbody.GetComponent<IInteractable>();
         }
         return null;
     }
