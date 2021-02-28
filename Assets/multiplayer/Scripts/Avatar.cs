@@ -20,6 +20,10 @@ public class Avatar : MonoBehaviour
     float snapAngle = 60.0f;
     [SerializeField]
     float rotationSpeed = 4.0f;
+    [SerializeField]
+    WearableAttachmentPoint attachmentPoint;
+
+    GameObject attachedHat = null;
 
     internal void Init(ulong id)
     {
@@ -49,5 +53,22 @@ public class Avatar : MonoBehaviour
 
         transform.eulerAngles = transformEuler;
         headTransform.localEulerAngles = headLocalEuler;
+    }
+
+    public void AttachHat(GameObject hat)
+    {
+        if (attachmentPoint.wearableAttached)
+            RemoveHat();
+
+        attachedHat = hat;
+        hat.transform.position = attachmentPoint.transform.position;
+        hat.transform.parent = attachmentPoint.transform;
+        attachmentPoint.wearableAttached = true;
+    }
+
+    public void RemoveHat()
+    {
+        attachmentPoint.wearableAttached = false;
+        Destroy(attachedHat);
     }
 }

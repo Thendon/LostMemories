@@ -1,11 +1,16 @@
+using LostMemoriesNetMessages;
 using System.Collections;
 using System.Collections.Generic;
+using TCPNetPackage;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Wearable : MonoBehaviour
 {
+    [SerializeField]
+    string netName;
+
     public ParentConstraint parentContraint;
     public XRGrabInteractable grabInteractable;
 
@@ -28,6 +33,13 @@ public class Wearable : MonoBehaviour
         parentContraint.constraintActive = true;
         isWorn = true;
         attachmentPoint.wearableAttached = true;
+
+        using(PackageOut package = new PackageOut())
+        {
+            package.AddString(netName);
+
+            PackageManager.SendData(package, (uint)NetHat.Package.WearsHat, NetHat.channel);
+        }
     }
 
     public void Release()
@@ -42,6 +54,11 @@ public class Wearable : MonoBehaviour
             isWorn = false;
             attachmentPoint.wearableAttached = false;
             attachmentPoint = null;
+
+            using (PackageOut package = new PackageOut())
+            {
+                PackageManager.SendData(package, (uint)NetHat.Package.ReleasesHat, NetHat.channel);
+            }
         }
     }
 

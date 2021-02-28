@@ -332,9 +332,54 @@ MonoBehaviour:
   attachedToSomething: 0
   headTransform: {fileID: 3904260487774883498}
   movementThreshold: 0.1
-  movementSpeed: 10
+  movementSpeed: 20
   snapAngle: 60
   rotationSpeed: 2
+  attachmentPoint: {fileID: 2469881196379064049}
+--- !u!1 &2634394997892171168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3264215238413993220}
+  - component: {fileID: 2469881196379064049}
+  m_Layer: 0
+  m_Name: WearableAttachmentPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3264215238413993220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634394997892171168}
+  m_LocalRotation: {x: -0.7660445, y: -0, z: -0, w: 0.64278764}
+  m_LocalPosition: {x: 0, y: 0.39599997, z: -0.09199989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3904260487774883498}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -100, y: 0, z: 0}
+--- !u!114 &2469881196379064049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634394997892171168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cfa4c2e80e0ac4eac87741a4e7440e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wearableAttached: 0
 --- !u!1 &2997212781303325852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1380,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.000000030877295, y: 0.09639992, z: 0.019030463}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3264215238413993220}
   m_Father: {fileID: 4112558917141825163}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

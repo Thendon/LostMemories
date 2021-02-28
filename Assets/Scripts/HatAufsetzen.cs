@@ -27,7 +27,6 @@ public class HatAufsetzen : MonoBehaviour, IInteractable
 
     public IEnumerator MoveTowards()
     {
-
         var shouldMove = true;
         while (shouldMove)
         {

@@ -100,8 +100,19 @@ namespace TCPSocketNetwork
 
         void DeleteAvatar(ulong playerID)
         {
+            if (!avatars.ContainsKey(playerID))
+                return;
+
             Destroy(avatars[playerID].gameObject);
             avatars.Remove(playerID);
+        }
+
+        public Avatar GetAvatar(ulong playerID)
+        {
+            if (!avatars.ContainsKey(playerID))
+                return null;
+
+            return avatars[playerID];
         }
     }
 }
