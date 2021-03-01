@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             showMemoryOnLeave = memory;
     }
 
-    void DisplayMemory()
+    public void DisplayMemory()
     {
         memoryIsDisplayed = true;
 

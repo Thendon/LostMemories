@@ -51,7 +51,7 @@ public class PlayerVR : MonoBehaviour
             showMemoryOnLeave = memory;
     }
 
-    void DisplayMemory()
+    public void DisplayMemory()
     {
         memoryIsDisplayed = true;
         memoryTime = 0.0f;

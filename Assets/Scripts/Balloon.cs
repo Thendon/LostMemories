@@ -11,6 +11,18 @@ public class Balloon : MonoBehaviour
     [SerializeField]
     protected VisualEffect m_Particle;
 
+    [SerializeField]
+    public Attraction attraction = null;
+
+    Player player = null;
+    PlayerVR playerVR = null;
+
+    void Awake()
+    {
+        player = FindObjectOfType<Player>();
+        playerVR = FindObjectOfType<PlayerVR>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine(Reactivate(5));
@@ -20,6 +32,16 @@ public class Balloon : MonoBehaviour
         m_Particle.Play();
 
         GameManager.Instance.AddCoins(3);
+        GameManager.Instance.AddMemory(attraction.memory);
+
+        if (player != null)
+        {
+            player.DisplayMemory();
+        }
+        else if (playerVR != null)
+        {
+            playerVR.DisplayMemory();
+        }
     }
 
     IEnumerator Reactivate(int secs)
